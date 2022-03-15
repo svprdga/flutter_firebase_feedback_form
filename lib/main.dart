@@ -1,6 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_feedback_form/firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const App());
 }
 
@@ -84,9 +92,27 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
         ),
         TextButton(
           child: const Text('Send'),
-          onPressed: () {
+          onPressed: () async {
             if (_formKey.currentState!.validate()) {
-              // Send feedback data to Firebase
+              String message;
+
+              try {
+                final collection =
+                    FirebaseFirestore.instance.collection('feedback');
+
+                await collection.doc().set({
+                  'timestamp': FieldValue.serverTimestamp(),
+                  'feedback': _controller.text,
+                });
+
+                message = 'Feedback sent successfully';
+              } catch (e) {
+                message = 'Error when sending feedback';
+              }
+
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(message)));
+              Navigator.pop(context);
             }
           },
         )

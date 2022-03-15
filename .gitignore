@@ -119,3 +119,6 @@ res/config/config.json
 
 # Generated translations
 lib/util/l10n
+
+# Firebase configuration file
+lib/firebase_options.dart
