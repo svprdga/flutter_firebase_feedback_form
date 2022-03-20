@@ -93,13 +93,18 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
         TextButton(
           child: const Text('Send'),
           onPressed: () async {
+            // Only if the input form is valid (the user has entered text)
             if (_formKey.currentState!.validate()) {
+              // We will use this var to show the result
+              // of this operation to the user
               String message;
 
               try {
+                // Get a reference to the `feedback` collection
                 final collection =
                     FirebaseFirestore.instance.collection('feedback');
 
+                // Write the server's timestamp and the user's feedback
                 await collection.doc().set({
                   'timestamp': FieldValue.serverTimestamp(),
                   'feedback': _controller.text,
@@ -110,6 +115,7 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
                 message = 'Error when sending feedback';
               }
 
+              // Show a snackbar with the result
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(message)));
               Navigator.pop(context);
