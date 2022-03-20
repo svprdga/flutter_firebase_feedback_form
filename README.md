@@ -1,16 +1,13 @@
-# flutter_firebase_feedback_form
+# Create a feedback form with Flutter and Firebase
 
-A new Flutter project.
+This is the sample project for the tutorial: 
 
-## Getting Started
+> Create a feedback form with Flutter and Firebase: Learn how to integrate Flutter Fire into a Flutter app and send data to Cloud Firestore.
 
-This project is a starting point for a Flutter application.
+You can find the text version of the tutorial [here](https://davidserrano.io/create-a-feedback-form-with-flutter-and-firebase-learn-how-to-integrate-flutter-fire-into-a-flutter-app-and-send-data-to-cloud-firestore).
 
-A few resources to get you started if this is your first Flutter project:
+You can find the video version of the tutorial on [Youtube](https://youtu.be/zDXpRTA55gE) and [Odysee](https://odysee.com/create-a-feedback-form-with-flutter-and-firebase-learn-how-to-integrate-flutter-fire-into-a-flutter-app-and-send-data-to-cloud-firestore:1ba42964af01c8884c88bb7cf59ad894b582eacb).
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Instructions
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This sample project does not contain any Firebase configuration file, in order to execute it you will have to run `flutter configure` on it to generate the `firebase_options.dart` file or perform the installation via configuration files.
